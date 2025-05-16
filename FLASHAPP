@@ -1,0 +1,450 @@
+package com.example.flash1
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
+import com.example.flash1.ui.theme.Flash1Theme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+                    var score = 0
+                    val question = arrayOf("WAS MANDELA THE PRESIDENT OF SOUTH AFRICA, NELSON MANDELA WAS KNOWN FOR BOXING, NELSON MANDELA WAS ONLY MARRIED ONCE, JULIUS MALEMA WAS ALONG SIDE NELSON DURING APARTHEID,NESLON MANDELA WAS A KING")
+                    val answer = arrayOf("TRUE,TRUE,FALSE,FALSE,FALSE")
+
+
+
+
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier. fillMaxSize()
+                ){
+                    Text("Welcome To Flash", fontSize = 33.sp
+                    )
+                    Text(" True or False Game")
+
+
+
+
+
+                    Button(onClick = {val Start = Intent(this@MainActivity, Insider::class.java)
+
+                        Start.putExtra("result", score)
+                        Start.putExtra("Name","Flash Card One")
+                        startActivity(Start)
+                    })
+
+                    {
+                        Text("Start")
+
+                    }
+                }
+
+
+
+            }
+        }
+    }
+
+
+package com.example.flash1
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.flash1.ui.theme.Flash1Theme
+import com.example.flash1.ui.theme.ui.theme.QUESTION
+
+class Insider : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+
+            var score = intent.getIntExtra("result", 0)
+            var name = intent.getStringExtra("Flash Card One")
+
+            val question = arrayOf("WAS MANDELA THE PRESIDENT OF SOUTH AFRICA")
+            val answer = arrayOf("True")
+
+
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier. fillMaxSize()
+            ){
+                Text(score.toString())
+                Text(name.toString())
+
+
+
+                Text("WAS MANDELA THE PRESIDENT OF SOUTH AFRICA")
+                Button(onClick = {/*TODO*/ }) {
+                    Text("True")
+
+                }
+                Button(onClick = {/*TODO*/ }) {
+                    Text("False")
+
+                }
+
+                }
+
+
+
+                Column {
+
+
+                    Button(onClick = {var NEXT = Intent(this@Insider, QUESTION::class.java)
+
+                        startActivity(NEXT)
+                    })
+
+                    {
+                        Text("NEXT")
+
+                    }
+                }
+
+            }
+
+
+
+
+
+
+
+
+        }}
+
+package com.example.flash1.ui.theme.ui.theme
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.flash1.ui.theme.ui.theme.ui.theme.Flash1Theme
+import com.example.flash1.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme.Mandela
+
+class QUESTION : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            var score = intent.getIntExtra("result", 0)
+            var name = intent.getStringExtra("Flash Card One")
+
+            val question = arrayOf("NELSON MANDELA WAS KNOWN FOR BOXING")
+            val answer = arrayOf("TRUE")
+
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier. fillMaxSize()
+            ){
+                Text(score.toString())
+                Text(name.toString())
+
+
+
+
+
+                Text("NELSON MANDELA WAS KNOWN FOR BOXING")
+                Button(onClick = {/*TODO*/ }) {
+                    Text("TRUE")
+
+                }
+                Button(onClick = {/*TODO*/ }) {
+                    Text("False")
+
+                }
+
+
+                Column {
+
+
+                    Button(onClick = {var NEXT = Intent(this@QUESTION, Mandela::class.java)
+                        startActivity(NEXT)
+                    })
+
+                    {
+                        Text("NEXT")
+
+                    }
+                }
+
+
+
+            }
+        }
+    }
+}
+
+
+
+package com.example.flash1.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.flash1.ui.theme.ui.theme.QUESTION
+import com.example.flash1.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme.Flash1Theme
+
+class Mandela : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+
+            var score = intent.getIntExtra("result", 0)
+            var name = intent.getStringExtra("Flash Card One")
+
+            val question = arrayOf("NELSON MANDELA WAS ONLY MARRIED ONCE")
+            val answer = arrayOf("FALSE")
+
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier. fillMaxSize()
+            ){
+                Text(score.toString())
+                Text(name.toString())
+
+
+
+
+                Text("NELSON MANDELA WAS ONLY MARRIED ONCE")
+                Button(onClick = {/*TODO*/ }) {
+                    Text("TRUE")
+
+                }
+                Button(onClick = {/*TODO*/ }) {
+                    Text("False")
+
+                }
+
+                Column {
+
+                    Button(onClick = {var NEXT = Intent(this@Mandela, Julius::class.java)
+                        startActivity(NEXT)
+                    })
+
+                    {
+                        Text("NEXT")
+
+                    }
+                }
+
+
+
+            }
+        }
+    }
+}
+
+
+package com.example.flash1.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.flash1.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme.Flash1Theme
+
+class Julius : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+
+            var score = intent.getIntExtra("result", 0)
+            var name = intent.getStringExtra("Flash Card One")
+
+            val question = arrayOf("JULIUS MALEMA WAS ALONG SIDE NELSON DURING APARTHEID")
+            val answer = arrayOf("TRUE")
+
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier. fillMaxSize()
+            ){
+                Text(score.toString())
+                Text(name.toString())
+
+
+
+                Text("JULIUS MALEMA WAS ALONG SIDE NELSON DURING APARTHEID")
+                Button(onClick = {/*TODO*/ }) {
+                    Text("TRUE")
+
+                }
+                Button(onClick = {/*TODO*/ }) {
+                    Text("False")
+
+                }
+
+                Column {
+
+                    Button(onClick = {var NEXT = Intent(this@Julius, NELSON::class.java)
+                        startActivity(NEXT)
+                    })
+
+                    {
+                        Text("NEXT")
+
+                    }
+                }
+
+
+
+            }
+
+        }
+
+    }
+}
+
+package com.example.flash1.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.flash1.MainActivity
+import com.example.flash1.ui.theme.ui.theme.QUESTION
+import com.example.flash1.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme.ui.theme.Flash1Theme
+
+class NELSON : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+
+            var score = intent.getIntExtra("result", 0)
+            var name = intent.getStringExtra("Flash Card One")
+
+            val question = arrayOf("NESLON MANDELA WAS A KING")
+            val answer = arrayOf("FALSE")
+
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier. fillMaxSize()
+            ){
+                Text(score.toString())
+                Text(name.toString())
+
+
+
+
+                Text("NESLON MANDELA WAS A KING")
+                Button(onClick = {/*TODO*/ }) {
+                    Text("TRUE")
+
+                }
+                Button(onClick = {/*TODO*/ }) {
+                    Text("False")
+
+                }
+
+                Column {
+
+
+                    Button(onClick = {var HOME = Intent(this@NELSON, MainActivity::class.java)
+
+                        startActivity(HOME)
+                    })
+
+                    {
+                        Text("HOME")
+
+                    }
+                }
+
+
+
+
+            }
+        }
+    }
+}
